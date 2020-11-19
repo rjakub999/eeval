@@ -13,7 +13,13 @@ eeval_calc(
 )
 }
 \arguments{
+\item{dane}{data.frame}
+
+\item{kategoria}{character}
+
 \item{euro}{character}
+
+\item{mode}{character}
 
 \item{substancja}{character}
 }
@@ -25,4 +31,5 @@ Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
 }
 \examples{
 eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
+
 }

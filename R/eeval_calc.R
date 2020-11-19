@@ -2,13 +2,18 @@
 #'
 #' Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
 #'
+#' @param dane data.frame
+#' @param kategoria character
 #' @param euro character
+#' @param mode character
 #' @param substancja character
 #'
 #' @return double
+#'
 #' @export
 #'
 #' @examples eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
+#'
 eeval_calc <- function(dane = input,
                         kategoria = "Passenger Cars",
                         # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
@@ -39,11 +44,11 @@ eeval_calc <- function(dane = input,
 
   out <-
     wskazniki %>%
-    filter(Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
+    dplyr::filter(Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
     # filter(Fuel %in% paliwo) %>%                # wylaczamy, jezeli w inpucie
-    filter(Euro.Standard %in% euro) %>%
+    dplyr::filter(Euro.Standard %in% euro) %>%
     # filter(Technology %in% technologia) %>%     # wylaczamy, jezeli w inpucie
-    filter(Pollutant %in% substancja)
+    dplyr::filter(Pollutant %in% substancja)
   # filter(Mode == mode)
 
   # SPRAWDZENIE POPRAWNOSCI DANYCH
@@ -63,13 +68,13 @@ eeval_calc <- function(dane = input,
   if(any(is.null(input))) {stop("Nieprawidlowe dane wejsciowe (puste wartosci)")}
 
   # zeby policzyc wskazniki laczymy out i input po kolumnie Segment, Fuel, Techn.
-  out <- inner_join(x = out, y = input, by =c("Segment", "Fuel", "Technology"))
+  out <- dplyr::inner_join(x = out, y = input, by =c("Segment", "Fuel", "Technology"))
 
   out <- out %>%
-    mutate(Emisja = Nat * ((Alpha * Procent^2 + Beta * Procent + Gamma + (Delta/Procent))/
+    dplyr::mutate(Emisja = Nat * ((Alpha * Procent^2 + Beta * Procent + Gamma + (Delta/Procent))/
                              (Epsilon * Procent^2 + Zita * Procent + Hta) * (1- Reduction))
     ) %>%
-    select(Category, Fuel, Euro.Standard, Technology, Pollutant, Mode, Segment, Nat, Emisja)
+    dplyr::select(Category, Fuel, Euro.Standard, Technology, Pollutant, Mode, Segment, Nat, Emisja)
 
   return(out)
 }
