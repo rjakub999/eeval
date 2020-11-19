@@ -23,6 +23,7 @@ Dane potrzebne dla funkcji szacowania emisji
 \examples{
 \dontrun{
  wskazniki
+ input
 }
 }
 \keyword{datasets}

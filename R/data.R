@@ -9,5 +9,7 @@
 #' @examples
 #' \dontrun{
 #'  wskazniki
+#'  input
 #' }
 "wskazniki"
+"input"
