@@ -2,21 +2,27 @@
 % Please edit documentation in R/eeval_calc.R
 \name{eeval_calc}
 \alias{eeval_calc}
-\title{Funkcja mnozy dwa argumrnty}
+\title{Funkcja oblicza wartosc emisji}
 \usage{
-eeval_calc(x, y)
+eeval_calc(
+  dane = input,
+  kategoria = "Passenger Cars",
+  euro = "Euro 5",
+  mode = "",
+  substancja = c("EC", "CO")
+)
 }
 \arguments{
-\item{x}{double}
+\item{euro}{character}
 
-\item{y}{double}
+\item{substancja}{character}
 }
 \value{
 double
 }
 \description{
-Funkcja testowa do nauki tworzenia pakietow
+Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
 }
 \examples{
-eeval_calc(2, 4)
+eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
 }
