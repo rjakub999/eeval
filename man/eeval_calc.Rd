@@ -15,7 +15,7 @@ eeval_calc(x, y)
 double
 }
 \description{
-Funkcja mnozy dwa argumrnty
+Funkcja testowa do nauki tworzenia pakietow
 }
 \examples{
 eeval_calc(2, 4)

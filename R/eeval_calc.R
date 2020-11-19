@@ -1,5 +1,7 @@
 #' Funkcja mnozy dwa argumrnty
 #'
+#' Funkcja testowa do nauki tworzenia pakietow
+#'
 #' @param x double
 #' @param y double
 #'
