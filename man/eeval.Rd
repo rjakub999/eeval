@@ -3,14 +3,15 @@
 \docType{package}
 \name{eeval}
 \alias{eeval}
-\title{eeval:Pakiet oceny emisji (emission evaluation)}
+\title{eeval: Pakiet oceny emisji (emission evaluation)}
 \description{
 Pakiet zawiera dwie funkcje:
 eeval_calc oblicza emisje
 eeval_draw rysuje wykresy emisji
 }
 \section{Dane do obliczen}{
- Funkcje pakietu korzystaja z danych dolaczonych do pakietu.
+
+Funkcje pakietu korzystaja z danych dolaczonych do pakietu.
 Dane sa dostepne dla uzytkownika jako obiekty wskazniki i input.
 }
 
