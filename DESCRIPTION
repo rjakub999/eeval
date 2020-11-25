@@ -19,7 +19,7 @@ Imports:
     base,
     dplyr,
     magrittr,
-    qpdf
+    qpdf,
 Suggests: 
     knitr,
     rmarkdown,
