@@ -10,4 +10,7 @@
 #'
 #' @docType package
 #' @name eeval
+#' @import magrittr
+#' @import dplyr
+#' @import qpdf
 NULL

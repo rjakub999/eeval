@@ -1,4 +1,5 @@
 ^eeval\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
-^\notatki$
+^pisanie_eeval$
+^README\.Rmd$

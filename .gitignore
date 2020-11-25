@@ -1,5 +1,6 @@
 .Rproj.user
 .Rhistory
 .RData
-\notatki
+.Ruserdata
 inst/doc
+pisanie_eeval.R
