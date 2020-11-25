@@ -25,4 +25,5 @@
 #' @examples
 #' \dontrun{
 #'  input
+#'  }
 "input"

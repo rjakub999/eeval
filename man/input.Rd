@@ -22,4 +22,9 @@ input
 \description{
 Dane potrzebne dla funkcji szacowania emisji
 }
+\examples{
+\dontrun{
+ input
+ }
+}
 \keyword{datasets}
