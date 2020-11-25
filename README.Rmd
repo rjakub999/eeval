@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# eeval
+
+Pakiet utworzony w ramach przedmiotu Inwentaryzacja i Szacowanie Emisji.  
+Służy do obliczania emisji i wyswietlania wyników na wykresie.  
+Funkcje korzystają z danych dołączonych do pakietu.
+
+# Instalacja z winietą
+
+```{r setup, eval=FALSE}
+# W razie potrzeby trzeba zainstalować pakiet devtools
+if (!require(devtools)) {install.packages("devtools"); require(devtools)}
+
+# Instalacja z GitHub
+install_github("rjakub999/eeval", force = T, build_vignettes = T)
+library(eeval)
+```
+
+
+Podgląd winiety
+
+```{r, eval=FALSE}
+# w przeglądarce
+browseVignettes("eeval")
+
+# w oknie pomocy
+vignette("eeval")
+```
