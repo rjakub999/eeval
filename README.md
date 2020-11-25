@@ -8,7 +8,7 @@ Emisji.
 Służy do obliczania emisji i wyswietlania wyników na wykresie.  
 Funkcje korzystają z danych dołączonych do pakietu.
 
-# Instalacja z winietą
+## Instalacja z winietą
 
 ``` r
 # W razie potrzeby trzeba zainstalować pakiet devtools
@@ -19,7 +19,14 @@ install_github("rjakub999/eeval", force = T, build_vignettes = T)
 library(eeval)
 ```
 
-Podgląd winiety
+## Przykład zastosowania
+
+``` r
+library(eeval)
+## basic example code
+```
+
+## Podgląd winiety
 
 ``` r
 # w przeglądarce

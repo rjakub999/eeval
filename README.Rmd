@@ -19,7 +19,8 @@ Pakiet utworzony w ramach przedmiotu Inwentaryzacja i Szacowanie Emisji.
 Służy do obliczania emisji i wyswietlania wyników na wykresie.  
 Funkcje korzystają z danych dołączonych do pakietu.
 
-# Instalacja z winietą
+
+## Instalacja z winietą
 
 ```{r setup, eval=FALSE}
 # W razie potrzeby trzeba zainstalować pakiet devtools
@@ -30,8 +31,17 @@ install_github("rjakub999/eeval", force = T, build_vignettes = T)
 library(eeval)
 ```
 
+## Przykład zastosowania
 
-Podgląd winiety
+
+```{r example}
+library(eeval)
+## basic example code
+```
+
+
+
+## Podgląd winiety
 
 ```{r, eval=FALSE}
 # w przeglądarce
@@ -40,3 +50,4 @@ browseVignettes("eeval")
 # w oknie pomocy
 vignette("eeval")
 ```
+
