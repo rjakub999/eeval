@@ -1,0 +1,33 @@
+---
+title: "Opis pakietu `eeval`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Opis pakietu eeval}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(eeval)
+```
+
+
+**Jakub Rudek**
+Geoinformacja III rok
+
+**e-mail:** *[rjakub999@gmail.com](rjakub999@gmail.com)*
+
+***
+# Wstęp
+***
+
+Fukcje pakietu pozwalają na obliczenia i wizualizacje emisji.
+
+
