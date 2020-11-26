@@ -13,4 +13,5 @@
 #' @import magrittr
 #' @import dplyr
 #' @import qpdf
+#' @import utils
 NULL

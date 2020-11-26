@@ -20,6 +20,7 @@ Imports:
     dplyr,
     magrittr,
     qpdf,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
