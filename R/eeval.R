@@ -14,4 +14,4 @@
 #' @import dplyr
 #' @import qpdf
 #' @import utils
-NULL
+utils::globalVariables(c("input", "wskazniki", "Category"))
