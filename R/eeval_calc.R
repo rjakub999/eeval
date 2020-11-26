@@ -14,6 +14,11 @@
 #'
 #' @examples eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
 #'
+
+
+# utils::globalVariables(c("input", "wskazniki", "Category"))
+
+
 eeval_calc <- function(dane = input,
                         kategoria = "Passenger Cars",
                         # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
