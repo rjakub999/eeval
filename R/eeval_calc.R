@@ -18,7 +18,6 @@
 
 # utils::globalVariables(c("input", "wskazniki", "Category"))
 
-
 eeval_calc <- function(dane = input,
                         kategoria = "Passenger Cars",
                         # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
