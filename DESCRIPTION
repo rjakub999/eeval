@@ -18,7 +18,7 @@ RoxygenNote: 7.1.1
 Imports: 
     base,
     dplyr,
-    magrittr,
+    magritstr,
     qpdf,
     utils
 Suggests: 

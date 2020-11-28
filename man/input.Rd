@@ -13,9 +13,6 @@ Ramka danych zawiera:
 \item{Technology}{Jak we wskazniki}
 }
 }
-\source{
-Wylosowane dane
-}
 \usage{
 input
 }
@@ -23,8 +20,6 @@ input
 Dane potrzebne dla funkcji szacowania emisji
 }
 \examples{
-\dontrun{
- input
- }
+input
 }
 \keyword{datasets}
