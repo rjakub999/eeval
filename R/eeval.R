@@ -14,4 +14,5 @@
 #' @import dplyr
 #' @import qpdf
 #' @import utils
+#' @importFrom rlang .data
 NULL
