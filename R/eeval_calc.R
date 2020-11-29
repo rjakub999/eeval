@@ -1,4 +1,4 @@
-#' Funkcja oblicza wartosc emisji
+#' Funkcja oblicza wartosc emisji (wersja v2)
 #'
 #' Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
 #'
@@ -7,6 +7,8 @@
 #' @param euro character
 #' @param mode character
 #' @param substancja character
+#'
+#' @importFrom rlang .data
 #'
 #' @return double
 #'
@@ -46,11 +48,11 @@ eeval_calc <- function(dane = input,
 
   out <-
     wskazniki %>%
-    dplyr::filter(Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
+    dplyr::filter(.wskazniki$Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
     # filter(Fuel %in% paliwo) %>%                # wylaczamy, jezeli w inpucie
-    dplyr::filter(Euro.Standard %in% euro) %>%
+    dplyr::filter(.wskazniki$Euro.Standard %in% euro) %>%
     # filter(Technology %in% technologia) %>%     # wylaczamy, jezeli w inpucie
-    dplyr::filter(Pollutant %in% substancja)
+    dplyr::filter(.wskazniki$Pollutant %in% substancja)
   # filter(Mode == mode)
 
   # SPRAWDZENIE POPRAWNOSCI DANYCH

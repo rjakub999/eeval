@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_calc.R
 \name{eeval_calc}
 \alias{eeval_calc}
-\title{Funkcja oblicza wartosc emisji}
+\title{Funkcja oblicza wartosc emisji (wersja v2)}
 \usage{
 eeval_calc(
   dane = input,
