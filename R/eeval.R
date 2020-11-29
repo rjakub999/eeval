@@ -16,3 +16,5 @@
 #' @import utils
 #' @importFrom rlang .data
 NULL
+
+utils::globalVariables(c("input", "wskazniki"))

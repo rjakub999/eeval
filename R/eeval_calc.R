@@ -14,7 +14,6 @@
 #'
 #' @examples eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
 #'
-# utils::globalVariables(c("input", "wskazniki", "Category"))
 
 eeval_calc <- function(dane = input,
                         kategoria = "Passenger Cars",
@@ -25,7 +24,7 @@ eeval_calc <- function(dane = input,
                         mode = "",
                         substancja = c("EC", "CO")) {
 
-  # SPRAWDZENIE POPRAWNOSCI ARGUMENTOW FUNKCJI
+  # SPRAWDZENIE POPRAWNOSCI ARGUMENTOW FUNKCJI --------------------------
   if(!(is.character(kategoria)) ||
      !(is.character(euro)) ||
      !(is.character(mode)) ||
@@ -44,6 +43,7 @@ eeval_calc <- function(dane = input,
   if(length(substancja) != length(intersect(substancja,wskazniki$Pollutant)))
   {stop("Nieprawidlowa wartosc dla parametru substancja")}
 
+# wyfiltrowanie -----------------------------------------------------------
   out <-
     wskazniki %>%
     dplyr::filter(.data$Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
@@ -53,7 +53,7 @@ eeval_calc <- function(dane = input,
     dplyr::filter(.data$Pollutant %in% substancja)
   # filter(Mode == mode)
 
-  # SPRAWDZENIE POPRAWNOSCI DANYCH
+  # SPRAWDZENIE POPRAWNOSCI DANYCH ------------------------------------------
   # sprawdzenie czy sa wszytkie wymagane kolumny w danych
   if(!(("Nat" %in% colnames(input)) &&
        ("Segment" %in% colnames(input)) &&
@@ -69,6 +69,7 @@ eeval_calc <- function(dane = input,
   if(!(is.data.frame(input))) {stop("Nieprawidlowe dane wejsciowe (format)")}
   if(any(is.null(input))) {stop("Nieprawidlowe dane wejsciowe (puste wartosci)")}
 
+# obliczenia emisji -------------------------------------------------------
   # zeby policzyc wskazniki laczymy out i input po kolumnie Segment, Fuel, Techn.
   out <- dplyr::inner_join(x = out, y = input, by =c("Segment", "Fuel", "Technology"))
 
