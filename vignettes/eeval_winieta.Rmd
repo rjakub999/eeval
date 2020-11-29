@@ -1,5 +1,5 @@
 ---
-title: "Opis pakietu `eeval`"
+title: "Opis pakietu eeval"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Opis pakietu eeval}
