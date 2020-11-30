@@ -7,6 +7,12 @@
 #'  \item{Fuel}{Jak we wskazniki}
 #'  \item{Technology}{Jak we wskazniki}
 #' }
+#'
+#' @docType data
+#' @keywords datasets
+#'
 #' @examples
 #' input
 "input"
+
+NULL

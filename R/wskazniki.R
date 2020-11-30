@@ -20,6 +20,12 @@
 #'  \item{Bio}{int}
 #'  \item{Procent}{int}
 #' }
+#'
+#' @docType data
+#' @keywords datasets
+#'
 #' @examples
 #'  wskazniki
 "wskazniki"
+
+NULL
