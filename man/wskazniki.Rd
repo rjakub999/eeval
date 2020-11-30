@@ -30,7 +30,9 @@ Ramka danych zawiera:
 wskazniki
 }
 \description{
-Dane potrzebne dla funkcji szacowania emisji
+Plik źródłowy z danymi:
+1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx
+został wstępnie przetworzony i zpisany do pliku wskazniki.rda
 }
 \examples{
  wskazniki
