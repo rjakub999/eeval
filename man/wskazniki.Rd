@@ -35,6 +35,8 @@ Plik źródłowy z danymi:
 został wstępnie przetworzony i zpisany do pliku wskazniki.rda
 }
 \examples{
+\dontrun{
  wskazniki
+ }
 }
 \keyword{datasets}

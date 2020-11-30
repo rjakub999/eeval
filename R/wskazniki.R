@@ -27,6 +27,8 @@
 #'
 #'
 #' @examples
+#' \dontrun{
 #'  wskazniki
+#'  }
 "wskazniki"
 

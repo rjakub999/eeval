@@ -1,7 +1,6 @@
 #' Dane pomocnicze dla funkcji szacowania emisji
 #'
-#' Z obiektu wskaznik
-#' zostało wylosowane 50 wierszy i zapisane do pliku input.rda
+#' Z obiektu wskazniki zostało wylosowane 50 wierszy i zapisane do pliku input.rda
 #'
 #' @format Ramka danych zawiera:
 #' \describe{
@@ -12,5 +11,7 @@
 #' }
 #'
 #' @examples
+#' \dontrun{
 #' input
+#' }
 "input"

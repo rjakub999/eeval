@@ -17,10 +17,11 @@ Ramka danych zawiera:
 input
 }
 \description{
-Z obiektu wskaznik
-zostało wylosowane 50 wierszy i zapisane do pliku input.rda
+Z obiektu wskazniki zostało wylosowane 50 wierszy i zapisane do pliku input.rda
 }
 \examples{
+\dontrun{
 input
+}
 }
 \keyword{datasets}
