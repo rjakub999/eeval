@@ -1,17 +1,12 @@
-#' Dane pomocnicze dla funkcji szacowania emisji
-#'
-#' Z obiektu wskazniki zostało wylosowane 50 wierszy i zapisane do pliku input.rda
+#' Dane potrzebne dla funkcji szacowania emisji
 #'
 #' @format Ramka danych zawiera:
 #' \describe{
-#'  \item{Nat}{Nat = abs(rnorm(50, mean = 100, sd = 50))}
-#'  \item{Segment}{sample(c("Mini","Small","Medium","Large-SUV-Executive"), ...}
-#'  \item{Fuel}{sample(unique(wskazniki$Fuel), ...}
-#'  \item{Technology}{sample(unique(wskazniki$Technology), ...}
+#'  \item{Nat}{Natezenie ruchu}
+#'  \item{Segment}{Jak we wskazniki}
+#'  \item{Fuel}{Jak we wskazniki}
+#'  \item{Technology}{Jak we wskazniki}
 #' }
-#'
 #' @examples
-#' \dontrun{
 #' input
-#' }
 "input"

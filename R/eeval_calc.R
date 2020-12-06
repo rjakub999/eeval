@@ -16,15 +16,15 @@
 #'
 
 eeval_calc <- function(dane = input,
-                        kategoria = "Passenger Cars",
-                        # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
-                        # segment = "Mini",    # wylaczamy, jezeli w inpucie
-                        euro = "Euro 5",
-                        # technologia = "GDI", # wylaczamy, jezeli w inpucie
-                        mode = "",
-                        substancja = c("EC", "CO")) {
+                       kategoria = "Passenger Cars",
+                       # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
+                       # segment = "Mini",    # wylaczamy, jezeli w inpucie
+                       euro = c("Euro 3", "Euro 4", "Euro 5", "Euro 6 up to 2016"),
+                       # technologia = "GDI", # wylaczamy, jezeli w inpucie
+                       mode = "",
+                       substancja = c("EC", "CO", "NOx")) {
 
-  # SPRAWDZENIE POPRAWNOSCI ARGUMENTOW FUNKCJI --------------------------
+  # SPRAWDZENIE POPRAWNOSCI ARGUMENTOW FUNKCJI
   if(!(is.character(kategoria)) ||
      !(is.character(euro)) ||
      !(is.character(mode)) ||
@@ -43,37 +43,43 @@ eeval_calc <- function(dane = input,
   if(length(substancja) != length(intersect(substancja,wskazniki$Pollutant)))
   {stop("Nieprawidlowa wartosc dla parametru substancja")}
 
-# wyfiltrowanie -----------------------------------------------------------
-  out <-
-    wskazniki %>%
-    dplyr::filter(.data$Category %in% kategoria) %>%  #zawiera sie w.. mozna wybrac 1,lub kilka
+  # wyfiltrowanie
+  wskazniki %>%
+    dplyr::filter(.data$Category %in% kategoria) %>%
+    # %in% oznacza: zawiera sie w... mozna wybrac 1,lub kilka
     # filter(Fuel %in% paliwo) %>%                # wylaczamy, jezeli w inpucie
     dplyr::filter(.data$Euro.Standard %in% euro) %>%
     # filter(Technology %in% technologia) %>%     # wylaczamy, jezeli w inpucie
-    dplyr::filter(.data$Pollutant %in% substancja)
-  # filter(Mode == mode)
+    dplyr::filter(.data$Pollutant %in% substancja) %>%
+    dplyr::filter(.data$Mode %in% mode) -> out
 
-  # SPRAWDZENIE POPRAWNOSCI DANYCH ------------------------------------------
+  # SPRAWDZENIE POPRAWNOSCI DANYCH
   # sprawdzenie czy sa wszytkie wymagane kolumny w danych
-  if(!(("Nat" %in% colnames(input)) &&
-       ("Segment" %in% colnames(input)) &&
-       ("Fuel" %in% colnames(input)) &&
-       ("Technology" %in% colnames(input)))) {
+  if(!(("Nat" %in% colnames(dane)) &&
+       ("Segment" %in% colnames(dane)) &&
+       ("Fuel" %in% colnames(dane)) &&
+       ("Technology" %in% colnames(dane)))) {
     stop("Nieprawidlowe dane wejsciowe (brak kolumny)")
-  } else if(ncol(input) != 4) {
+  } else if(ncol(dane) != 4) {
     stop("Nieprawidlowe dane wejsciowe (liczba kolumn)")
-  } else if((nrow(input)  < 1) || (nrow(input)  > 1000)) {
-    stop("Nieprawidlowe dane wejsciowe (liczba wierszy)")
+  } else if((nrow(dane)  < 1) || (nrow(dane)  > 1000)) {
+    stop("Nieprawidlowe dane wejsciowe (liczba wierszy min = 1, max = 1000)")
   }
 
-  if(!(is.data.frame(input))) {stop("Nieprawidlowe dane wejsciowe (format)")}
-  if(any(is.null(input))) {stop("Nieprawidlowe dane wejsciowe (puste wartosci)")}
+  if(!(is.data.frame(dane))) {stop("Nieprawidlowe dane wejsciowe (format)")}
+  if(any(is.null(dane))) {stop("Nieprawidlowe dane wejsciowe (puste wartosci)")}
 
-# obliczenia emisji -------------------------------------------------------
+  # print("************* INPUT ******************")
+  # print(input)
+  # print("************* DANE *******************")
+  # print(dane)
+
+  # obliczenia emisji
   # zeby policzyc wskazniki laczymy out i input po kolumnie Segment, Fuel, Techn.
-  out <- dplyr::inner_join(x = out, y = input, by =c("Segment", "Fuel", "Technology"))
+  out <- dplyr::inner_join(x = out, y = dane, by =c("Segment", "Fuel", "Technology"))
+  # powinno byc polaczenie out i dane, a nie out i input
 
-  out <- out %>%
+  out <- na.omit(out) %>%
     dplyr::mutate(Emisja = .data$Nat * ((.data$Alpha * .data$Procent^2 +
                                            .data$Beta * .data$Procent +
                                            .data$Gamma +
@@ -86,5 +92,7 @@ eeval_calc <- function(dane = input,
                   .data$Technology, .data$Pollutant, .data$Mode,
                   .data$Segment, .data$Nat, .data$Emisja)
 
+  if(nrow(out) == 0)
+    stop("Dla podanej kombinacji parametrÓw nie itnieje zestaw danych")
   return(out)
 }
