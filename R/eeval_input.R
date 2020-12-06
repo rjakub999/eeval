@@ -2,7 +2,7 @@
 #'
 #'
 #' @param segm wektor wartosci Segment dla odpowiadajacej pozycji Category
-#' @param nsample double
+#' @param n_spl double
 #'
 #' @return data.frame
 #'

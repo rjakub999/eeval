@@ -12,7 +12,7 @@ eeval_input(
 \arguments{
 \item{segm}{wektor wartosci Segment dla odpowiadajacej pozycji Category}
 
-\item{nsample}{double}
+\item{n_spl}{double}
 }
 \value{
 data.frame
