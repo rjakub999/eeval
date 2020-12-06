@@ -15,3 +15,9 @@ Funkcje pakietu korzystaja z danych dolaczonych do pakietu.
 Dane sa dostepne dla uzytkownika jako obiekty wskazniki i input.
 }
 
+\section{UWAGA}{
+ bez zaimportowania stats NOTE: brak pakietu dla na.omnit
+po zaimportowaniu stats komunikaty ostrzegawcze, że dplyr::filter
+nadisane przez stats::filter
+}
+

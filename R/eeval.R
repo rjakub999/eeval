@@ -19,6 +19,7 @@
 #' @import qpdf
 #' @import utils
 #' @import stats
+#' @import ggplot2
 #' @importFrom rlang .data
 NULL
 

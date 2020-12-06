@@ -22,7 +22,8 @@ Imports:
     qpdf,
     utils,
     rlang,
-    stats
+    stats,
+    ggplot2
 Suggests: 
     knitr,
     rmarkdown,
