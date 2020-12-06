@@ -1,4 +1,4 @@
-#' Funkcja oblicza wartosc emisji (wersja v2)
+#' Funkcja oblicza wartosc emisji (wersja v3)
 #'
 #' Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
 #'
@@ -12,9 +12,8 @@
 #'
 #' @export
 #'
-#' @examples eeval_calc(euro = "Euro 5", substancja = c("EC", "CO", "NOx"))
+#' @examples eeval_wynik <- eeval_calc()
 #'
-
 eeval_calc <- function(dane = input,
                        kategoria = "Passenger Cars",
                        # paliwo = "Petrol",   # wylaczamy, jezeli w inpucie
@@ -93,6 +92,6 @@ eeval_calc <- function(dane = input,
                   .data$Segment, .data$Nat, .data$Emisja)
 
   if(nrow(out) == 0)
-    stop("Dla podanej kombinacji parametrÓw nie itnieje zestaw danych")
+    stop("Dla podanej kombinacji parametrow nie itnieje zestaw danych")
   return(out)
 }

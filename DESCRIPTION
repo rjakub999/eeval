@@ -21,7 +21,8 @@ Imports:
     magrittr,
     qpdf,
     utils,
-    rlang
+    rlang,
+    stats
 Suggests: 
     knitr,
     rmarkdown,
