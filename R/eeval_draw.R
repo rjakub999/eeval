@@ -1,13 +1,18 @@
-#' Funkcja rysuje wykresy na podstawie danych z obliczen eeval_calc()
+#' Funkcja rysuje wykresy na podstawie danych utworzonych za pomoca eeval_calc()
+#'
+#' Rodzaj wykresow jest ustalany automatycznie w zaleznosci od typu
+#' zmiennej na osi x.
+#' Dla zmiennej typu numeric rysowane sa wykresy punktowe z wygladzonymi liniami.
+#' Dla zmiennej typu character rysowane sa wykresy pudelkowe.
 #'
 #'
 #' @param dane data.frame
-#' @param x character/numeric
-#' @param y character
-#' @param z character
-#' @param u character
-#' @param nrow numeric
-#' @param skala_y numeric
+#' @param x character lub numeric - kolumna ramki danych na osi x
+#' @param y numeric - kolumna ramki danych na osi y
+#' @param z character - dane dla kolejnych wykresow
+#' @param u character - dane dla kolejnych wykresow
+#' @param nrow liczba wykresow w jednym wierszu
+#' @param max_y maksymalna wartosc na osi y
 #'
 #' @return double
 #'
@@ -22,7 +27,7 @@ eeval_draw <- function(dane = eeval_wynik,
                        z = .data$Pollutant,
                        u = .data$Euro.Standard,
                        nrow = 2,
-                       skala_y =3000) {
+                       max_y =3000) {
 
   x <- enquo(x)
   y <- enquo(y)
@@ -39,7 +44,7 @@ eeval_draw <- function(dane = eeval_wynik,
       geom_boxplot()+
       theme_bw() +
       facet_wrap(~ obj_wrap, nrow = nrow) +
-      scale_y_continuous(limits = c(0,skala_y)) +
+      scale_y_continuous(limits = c(0,max_y)) +
       theme(axis.text.x = element_text(angle = 90)) +
       ggtitle("Wykres dla zmienej kategorycznej na osi x")
 
@@ -51,7 +56,7 @@ eeval_draw <- function(dane = eeval_wynik,
       geom_smooth(aes(color = !!z)) +
       theme_bw() +
       facet_wrap(~ obj_wrap, nrow = nrow) +
-      scale_y_continuous(limits = c(0,skala_y)) +
+      scale_y_continuous(limits = c(0,max_y)) +
       ggtitle("Wykres dla zmienej numerycznej na osi x")
   }
   # zabezpieczenie

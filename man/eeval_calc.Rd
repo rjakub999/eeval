@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_calc.R
 \name{eeval_calc}
 \alias{eeval_calc}
-\title{Funkcja oblicza wartosc emisji (wersja v3)}
+\title{Funkcja do wyznaczania wartosci emisji.}
 \usage{
 eeval_calc(
   dane = input,
@@ -27,7 +27,10 @@ eeval_calc(
 double
 }
 \description{
-Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
+Funkcja oblicza emisje na podstawie danych zawartych w zmiennej
+\code{wskazniki} oraz przygotowanej w odpowiedni sposob zmiennej \code{input}.
+W obiekcie \code{wskazniki} zapisane sa dane emisji z podzialem na rozne kategorie.
+W obiekcie \code{input} zapisane sa wygenerowane losowo dane natezenia ruchu.
 }
 \examples{
 eeval_wynik <- eeval_calc()

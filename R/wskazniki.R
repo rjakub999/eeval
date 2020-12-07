@@ -1,4 +1,4 @@
-#' Dane potrzebne dla funkcji szacowania emisji
+#' Dane dla funkcji szacowania emisji
 #'
 #' Plik źródłowy z danymi:
 #' 1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx
@@ -6,25 +6,24 @@
 #'
 #' @format Ramka danych zawiera:
 #' \describe{
-#'  \item{Category}{Passenger Cars itd.}
-#'  \item{Fuel}{Petrol itd.}
-#'  \item{Segment}{Mini itd.}
-#'  \item{Euro.Standard}{Euro 4 itd.}
-#'  \item{Technology}{GDI itd.}
-#'  \item{Pollutant}{NOx itd.}
-#'  \item{Mode}{Urban Peak itd.}
-#'  \item{Alpha}{double}
-#'  \item{Beta}{double}
-#'  \item{Gamma}{double}
-#'  \item{Delta}{double}
-#'  \item{Epsilon}{double}
-#'  \item{Zita}{double}
-#'  \item{Hta}{double}
-#'  \item{Reduction}{int}
-#'  \item{Bio}{int}
-#'  \item{Procent}{int}
+#'  \item{Category}{Kategoria pojazdu - Passenger Cars itd.}
+#'  \item{Fuel}{Rodzaj paliwa - Petrol itd.}
+#'  \item{Segment}{Segment pojazdow - Mini itd.}
+#'  \item{Euro.Standard}{Norma dopuszczalnych emisji spalin - Euro 4 itd.}
+#'  \item{Technology}{Technologia pracy silnika - GDI itd.}
+#'  \item{Pollutant}{Rodzaj emitowanego zanieczyszczenia - NOx itd.}
+#'  \item{Mode}{Tryb jazdy pojazdu - Urban Peak itd.}
+#'  \item{Alpha}{parametr szacowania emisji - double}
+#'  \item{Beta}{parametr szacowania emisji - double}
+#'  \item{Gamma}{parametr szacowania emisji - double}
+#'  \item{Delta}{parametr szacowania emisji - double}
+#'  \item{Epsilon}{parametr szacowania emisji - double}
+#'  \item{Zita}{parametr szacowania emisji - double}
+#'  \item{Hta}{parametr szacowania emisji - double}
+#'  \item{Reduction}{parametr szacowania emisji - double}
+#'  \item{Bio}{parametr szacowania emisji - double}
+#'  \item{Procent}{parametr szacowania emisji - double}
 #' }
-#'
 #'
 #' @examples
 #' \dontrun{

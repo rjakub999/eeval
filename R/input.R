@@ -1,11 +1,14 @@
-#' Dane potrzebne dla funkcji szacowania emisji
+#' Dane wejsciowe dla funkcji szacowania emisji
+#'
+#' Natezenie ruchu to wygenerowany losowo wektor o zadanej dlugosci.
+#' Pozostale dane sa wybrane z obiektu wskazniki.
 #'
 #' @format Ramka danych zawiera:
 #' \describe{
 #'  \item{Nat}{Natezenie ruchu}
-#'  \item{Segment}{Jak we wskazniki}
-#'  \item{Fuel}{Jak we wskazniki}
-#'  \item{Technology}{Jak we wskazniki}
+#'  \item{Segment}{Segment pojazdow - Mini itd.}
+#'  \item{Fuel}{Rodzaj paliwa - Petrol itd.}
+#'  \item{Technology}{Technologia pracy silnika - GDI itd.}
 #' }
 #' @examples
 #' input

@@ -5,19 +5,19 @@
 \alias{eeval}
 \title{eeval: Pakiet oceny emisji (emission evaluation)}
 \description{
-Pakiet zawiera dwie funkcje:
-eeval_calc oblicza emisje
-eeval_draw rysuje wykresy emisji
+Pakiet zawiera trzy funkcje eeval_input(), eeval_calc(), eeval_draw()
+}
+\details{
+\code{eeval_input()} generuje dane wejsciowe
+
+\code{eeval_calc()} oblicza emisje
+
+\code{eeval_draw()} rysuje wykresy emisji
 }
 \section{Dane do obliczen}{
 
 Funkcje pakietu korzystaja z danych dolaczonych do pakietu.
-Dane sa dostepne dla uzytkownika jako obiekty wskazniki i input.
-}
 
-\section{UWAGA}{
- bez zaimportowania stats NOTE: brak pakietu dla na.omnit
-po zaimportowaniu stats komunikaty ostrzegawcze, że dplyr::filter
-nadisane przez stats::filter
+Dane sa dostepne dla uzytkownika jako obiekty \code{wskazniki}, \code{input}, \code{wynik_eeval}.
 }
 

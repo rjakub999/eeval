@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_draw.R
 \name{eeval_draw}
 \alias{eeval_draw}
-\title{Funkcja rysuje wykresy na podstawie danych z obliczen eeval_calc()}
+\title{Funkcja rysuje wykresy na podstawie danych utworzonych za pomoca eeval_calc()}
 \usage{
 eeval_draw(
   dane = eeval_wynik,
@@ -11,29 +11,32 @@ eeval_draw(
   z = .data$Pollutant,
   u = .data$Euro.Standard,
   nrow = 2,
-  skala_y = 3000
+  max_y = 3000
 )
 }
 \arguments{
 \item{dane}{data.frame}
 
-\item{x}{character/numeric}
+\item{x}{character lub numeric - kolumna ramki danych na osi x}
 
-\item{y}{character}
+\item{y}{numeric - kolumna ramki danych na osi y}
 
-\item{z}{character}
+\item{z}{character - dane dla kolejnych wykresow}
 
-\item{u}{character}
+\item{u}{character - dane dla kolejnych wykresow}
 
-\item{nrow}{numeric}
+\item{nrow}{liczba wykresow w jednym wierszu}
 
-\item{skala_y}{numeric}
+\item{max_y}{maksymalna wartosc na osi y}
 }
 \value{
 double
 }
 \description{
-Funkcja rysuje wykresy na podstawie danych z obliczen eeval_calc()
+Rodzaj wykresow jest ustalany automatycznie w zaleznosci od typu
+zmiennej na osi x.
+Dla zmiennej typu numeric rysowane sa wykresy punktowe z wygladzonymi liniami.
+Dla zmiennej typu character rysowane sa wykresy pudelkowe.
 }
 \examples{
 eeval_draw()

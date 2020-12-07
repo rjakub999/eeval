@@ -1,6 +1,9 @@
-#' Funkcja oblicza wartosc emisji (wersja v3)
+#' Funkcja do wyznaczania wartosci emisji.
 #'
-#' Argumentami sa norma emisji spalin i rodzaj substancji (wskaznika)
+#'  Funkcja oblicza emisje na podstawie danych zawartych w zmiennej
+#' \code{wskazniki} oraz przygotowanej w odpowiedni sposob zmiennej \code{input}.
+#' W obiekcie \code{wskazniki} zapisane sa dane emisji z podzialem na rozne kategorie.
+#' W obiekcie \code{input} zapisane sa wygenerowane losowo dane natezenia ruchu.
 #'
 #' @param dane data.frame
 #' @param kategoria character

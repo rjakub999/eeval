@@ -1,15 +1,34 @@
-#' Funkcja przygotowuje danedla funkcji eeval_calc() (wersja v2)
+#' Funkcja przygotowuje dane dla eeval_calc()
 #'
+#' Funkcja generuje losowe dane natezenia ruchu i dolacza do nich
+#' wybrany segment pojazdow i losowo dobrane parametry zuzycia paliwa
+#' i technologii silnika.
 #'
-#' @param segm wektor wartosci Segment dla odpowiadajacej pozycji Category
-#' @param n_spl double
+#' @param segm wektor wartosci Segment dla odpowiadajacej pozycji Category.
+#'
+#' @param n_spl liczba losowo generowanych danych natezenia ruchu
 #'
 #' @return data.frame
 #'
 #' @export
 #'
-#' @examples input2 <- eeval_input()
+#' @examples
+#' #Uruchomienie funkcji z parametrami domyslnymi
+#' input2 <- eeval_input()
 #'
+#' # Wygenerowanie innych danych
+#' input3 <- eeval_input(segm = c("Urban Buses Midi <=15 t",
+#' "Urban Buses Standard 15 - 18 t",
+#' "Urban Buses Articulated >18 t",
+#' "Coaches Standard <=18 t"),
+#' n_spl = 200)
+#'
+#' @details
+#' W celu uzyskania dostepnych wartosci Segment w danej Category zastosuj np.:
+#'
+#' \code{wskazniki %>%
+#' filter(Category == "Buses") %>%
+#' select(Segment) %>% unique()}
 
 eeval_input <- function(segm = c("Mini","Small","Medium","Large-SUV-Executive"),
                         n_spl = 300) {

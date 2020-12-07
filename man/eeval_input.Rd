@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_input.R
 \name{eeval_input}
 \alias{eeval_input}
-\title{Funkcja przygotowuje danedla funkcji eeval_calc() (wersja v2)}
+\title{Funkcja przygotowuje dane dla eeval_calc()}
 \usage{
 eeval_input(
   segm = c("Mini", "Small", "Medium", "Large-SUV-Executive"),
@@ -10,17 +10,34 @@ eeval_input(
 )
 }
 \arguments{
-\item{segm}{wektor wartosci Segment dla odpowiadajacej pozycji Category}
+\item{segm}{wektor wartosci Segment dla odpowiadajacej pozycji Category.}
 
-\item{n_spl}{double}
+\item{n_spl}{liczba losowo generowanych danych natezenia ruchu}
 }
 \value{
 data.frame
 }
 \description{
-Funkcja przygotowuje danedla funkcji eeval_calc() (wersja v2)
+Funkcja generuje losowe dane natezenia ruchu i dolacza do nich
+wybrany segment pojazdow i losowo dobrane parametry zuzycia paliwa
+i technologii silnika.
+}
+\details{
+W celu uzyskania dostepnych wartosci Segment w danej Category zastosuj np.:
+
+\code{wskazniki \%>\%
+filter(Category == "Buses") \%>\%
+select(Segment) \%>\% unique()}
 }
 \examples{
+#Uruchomienie funkcji z parametrami domyslnymi
 input2 <- eeval_input()
+
+# Wygenerowanie innych danych
+input3 <- eeval_input(segm = c("Urban Buses Midi <=15 t",
+"Urban Buses Standard 15 - 18 t",
+"Urban Buses Articulated >18 t",
+"Coaches Standard <=18 t"),
+n_spl = 200)
 
 }
