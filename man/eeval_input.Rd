@@ -35,9 +35,9 @@ input2 <- eeval_input()
 
 # Wygenerowanie innych danych
 input3 <- eeval_input(segm = c("Urban Buses Midi <=15 t",
-"Urban Buses Standard 15 - 18 t",
-"Urban Buses Articulated >18 t",
-"Coaches Standard <=18 t"),
-n_spl = 200)
+                               "Urban Buses Standard 15 - 18 t",
+                               "Urban Buses Articulated >18 t",
+                               "Coaches Standard <=18 t"),
+                               n_spl = 200)
 
 }

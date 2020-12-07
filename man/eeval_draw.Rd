@@ -39,6 +39,25 @@ Dla zmiennej typu numeric rysowane sa wykresy punktowe z wygladzonymi liniami.
 Dla zmiennej typu character rysowane sa wykresy pudelkowe.
 }
 \examples{
+# Narysowanie wykresow dla domyslnych danych
 eeval_draw()
 
+\dontrun{
+# Narysowanie wykresow dla przykladowych danych input2
+eeval_draw(dane = eeval_wynik2,
+           x = .data$Nat,
+           y = .data$Emisja,
+           z = .data$Pollutant,
+           u = .data$Euro.Standard,
+           nrow = 2,
+           skala_y = 2000)
+
+# Narysowanie wykresow dla przykladowych danych input3
+eeval_draw(dane = eeval_wynik3,
+           x = .data$Segment,
+           y = .data$Emisja,
+           z = .data$Pollutant,
+           nrow = 2,
+           skala_y = 1000)
+}
 }

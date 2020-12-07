@@ -33,6 +33,24 @@ W obiekcie \code{wskazniki} zapisane sa dane emisji z podzialem na rozne kategor
 W obiekcie \code{input} zapisane sa wygenerowane losowo dane natezenia ruchu.
 }
 \examples{
-eeval_wynik <- eeval_calc()
+# Obliczenie emisji dla parametrow domyslnych (input)
+  eeval_wynik <- eeval_calc()
 
+\dontrun{
+# Obliczenie emisji dla przykladowych danych input2
+eeval_wynik2 <-
+ eeval_calc(dane = input2,
+            kategoria = "Passenger Cars",
+            euro = c("Euro 3", "Euro 4", "Euro 5", "Euro 6 up to 2016"),
+            substancja = c("EC", "CO", "NOx"),
+            mode = "")
+
+# Obliczenie emisji dla przykladowych danych inut3
+eeval_wynik3 <-
+ eeval_calc(dane = input3,
+            kategoria = "Buses",
+            euro = c("Euro II", "Euro III", "Euro IV", "Euro V"),
+            substancja = c("EC", "CO", "NOx", "NH3"),
+            mode = "")
+}
 }
