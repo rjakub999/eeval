@@ -18,9 +18,9 @@
 #' @import dplyr
 #' @import qpdf
 #' @import utils
-#' @import stats
 #' @import ggplot2
-#' @importFrom rlang .data
+#' @importFrom rlang .data eval_tidy
+#' @importFrom stats na.omit rnorm
 NULL
 
-utils::globalVariables(c("input", "wskazniki"))
+utils::globalVariables(c("input", "wskazniki", "eeval_wynik"))

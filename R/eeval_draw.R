@@ -29,12 +29,13 @@ eeval_draw <- function(dane = eeval_wynik,
   z <- enquo(z)
   u <- enquo(u)
 
-  if(is.character(rlang::eval_tidy(enexpr(x), dane))) {
+  # zapisanie do zmiennej calej kolumny x z ramki danych dane
+  dane_x <- rlang::eval_tidy(enexpr(x), dane)
+
+  if(is.character(dane_x)) {
     dane %>%
       mutate(obj_wrap = !!z) %>%
-      ggplot(., aes(!!x,
-                    !!y,
-                    fill = !!x)) +
+      ggplot(aes(!!x, !!y, fill = !!x)) +
       geom_boxplot()+
       theme_bw() +
       facet_wrap(~ obj_wrap, nrow = nrow) +
@@ -42,10 +43,10 @@ eeval_draw <- function(dane = eeval_wynik,
       theme(axis.text.x = element_text(angle = 90)) +
       ggtitle("Wykres dla zmienej kategorycznej na osi x")
 
-  } else if (is.numeric(rlang::eval_tidy(enexpr(x), dane))) {
+  } else if (is.numeric(dane_x)) {
     dane %>%
       mutate(obj_wrap = !!u) %>%
-      ggplot(., aes(!!x, !!y)) +
+      ggplot(aes(!!x, !!y)) +
       geom_point(aes(color = !!z)) +
       geom_smooth(aes(color = !!z)) +
       theme_bw() +
