@@ -20,7 +20,7 @@ Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnik
 Funkcje korzystają z danych dołączonych do pakietu.  
 Plik źródłowy z pierwotnymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` został wstępnie przetworzony i zpisany do obiektu `wskazniki`.
 
-Peny opis pakietu znajdije się na stronie [RPubs](https://rpubs.com/rjakub/eeval_winieta)
+Peny opis pakietu znajduje się na stronie [RPubs](https://rpubs.com/rjakub/eeval_winieta)
 
 
 ## Instalacja z winietą
@@ -39,7 +39,8 @@ library(eeval)
 
 ```{r example}
 library(eeval)
-## basic example code
+eeval_calc()
+eeval_draw()
 ```
 
 
