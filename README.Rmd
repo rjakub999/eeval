@@ -30,7 +30,7 @@ Dokumemntacja do tych danych jest zamieszczona na stronie:
 
 Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:
 
-```
+``` {r utworz_wskazn, eval = FALSE}
 library("openxlsx")
 katalog = "c:/sciezka_do_pliku/"
 setwd(katalog)
@@ -47,8 +47,6 @@ wskazniki <-wskazniki %>%
          -`Load`)
 
 colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
-
-save(wskazniki, file = "wskazniki.rda")
 ```
 
 
@@ -70,7 +68,6 @@ library(eeval)
 
 
 ```{r example, eval = FALSE}
-library(eeval)
 # opis pakietu w systemie pomocy 
 ?eeval
 # utuchomienie funkcji z parametrami domyślnymi

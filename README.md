@@ -23,24 +23,24 @@ pdf](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-secto
 Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu
 należy użyć następującego kodu:
 
-    library("openxlsx")
-    katalog = "c:/sciezka_do_pliku/"
-    setwd(katalog)
-    plik_xlsx = "1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx"
-    wskazniki <- openxlsx::read.xlsx(xlsxFile = plik_xlsx, sheet = 2)
-    
-    wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
-    
-    wskazniki <-wskazniki %>% 
-      select(-`EF.[g/km].or.ECF.[MJ/km]`,
-             -`Min.Speed.[km/h]`,
-             -`Max.Speed.[km/h]`,
-             -`Road.Slope`,
-             -`Load`)
-    
-    colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
-    
-    save(wskazniki, file = "wskazniki.rda")
+``` r
+library("openxlsx")
+katalog = "c:/sciezka_do_pliku/"
+setwd(katalog)
+plik_xlsx = "1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx"
+wskazniki <- openxlsx::read.xlsx(xlsxFile = plik_xlsx, sheet = 2)
+
+wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
+
+wskazniki <-wskazniki %>% 
+  select(-`EF.[g/km].or.ECF.[MJ/km]`,
+         -`Min.Speed.[km/h]`,
+         -`Max.Speed.[km/h]`,
+         -`Road.Slope`,
+         -`Load`)
+
+colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
+```
 
 Peny opis pakietu znajduje się na stronie
 [RPubs](https://rpubs.com/rjakub/eeval_winieta)
@@ -59,7 +59,6 @@ library(eeval)
 ## Przykład zastosowania
 
 ``` r
-library(eeval)
 # opis pakietu w systemie pomocy 
 ?eeval
 # utuchomienie funkcji z parametrami domyślnymi
