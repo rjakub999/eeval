@@ -37,14 +37,12 @@ Geoinformacja III rok
 
 Pakiet utworzony w ramach przedmiotu Inwentaryzacja i Szacowanie Emisji.  
 Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnikami spalinowymi i wyświetlania wyników na wykresach. Funkcje pakietu korzystają z danych dołączonych do pakietu.   
-Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu daych zawartych w obiekcie `wskazniki`.
+Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu danych zawartych w obiekcie `wskazniki`. Dodatkowo do działania pakietu używany jest obiekt `input`.  
 
-Winieta opisuje nastpujące zagadnienia:  
-1. Zawartość **surowego pliku danych** `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
-   i ewentualne samodzielne przygotowanie danych wejściowych dla funkcji pakietu.
-2. Format **danych wejściowych** przetwarzanych przez funkcje pakietu.  
+Winieta opisuje następujące zagadnienia:  
+1. Format **danych wejściowych** przetwarzanych przez funkcje pakietu.  
 3. Opis **funkcji pakietu** i możliwości ich wykorzystania.  
-
+4. Przygotowanie **własnych danych surowych**.
 
 ***
 ## Instalacja pakietu
@@ -80,58 +78,32 @@ library(ggplot2)
 ```
 
 ***
-## 1. Surowy plik danych
-***
-
-Plik z surowymi danymi `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
-
-Można też pobrać aktualną wersję pliku surowych danych ze strony:
-[eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)
-
-Dokumemntacja do tych danych jest zamieszczona na stronie:
-[eea pdf](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
-
-Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:
-
-``` {r utworz_wskazn, eval = FALSE}
-library("openxlsx")
-katalog = "c:/sciezka_do_pliku/"
-setwd(katalog)
-plik_xlsx = "1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx"
-wskazniki <- openxlsx::read.xlsx(xlsxFile = plik_xlsx, sheet = 2)
-
-wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
-
-wskazniki <-wskazniki %>% 
-  select(-`EF.[g/km].or.ECF.[MJ/km]`,
-         -`Min.Speed.[km/h]`,
-         -`Max.Speed.[km/h]`,
-         -`Road.Slope`,
-         -`Load`)
-
-colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
-```
-
-***
-## 2. Dane wejściowe 
+## 1. Dane wejściowe 
 ***
 
 Obiekt `input` to dane wejsciowe dla funkcji szacowania emisji.
 Zawiera następujące dane:  
 * Natężenie ruchu to wygenerowany losowo wektor o zadanej długosci.  
-* Pozostale dane są wybrane z obiektu wskazniki.  
+* Pozostale dane są wybrane z obiektu `wskazniki`.  
 
 
 
 ***
-## 3. Funkcje pakietu 
+## 2. Funkcje pakietu 
 ***
 
-```
+Uruchomienie funkcji z parametrami domyślnymi pozwala na szybki start.
+
+```{r zestaw_domyslny, eval = FALSE}
 ## ZESTAW PARAMETROW DOMYSLNYCH -----------------------------------
 eeval_calc()
 eeval_draw()
+```
 
+W celu sprawnego zapoznania się z modyfikacją parametrów funkcji pakietu przygotowałem dwa zestawy parametrów, które pokazują cały "workflow" działania z pakietem.
+
+
+``` {r zestaw2, eval = FALSE}
 ## ZESTAW PARAMETROW nr 2 ------------------------------------------
 # losowanie danych
 input2 <- eeval_input(segm = c("Mini","Small","Medium","Large-SUV-Executive"),
@@ -154,17 +126,22 @@ eeval_draw(dane = eeval_wynik2,
            nrow = 2,
            max_y = 2000)
 
+```
 
-## ZESTAW PARAMETROW nr 3 ----------------------------------------------
+
+Sprawdzenie jakie są dostępne segmenty pojazdów (Segment) w danej kategorii (Category) możemy wykonać posługując się przykładowym kodem:  
+
+```{r test_kat, eval = FALSE}
 wskazniki %>% 
   filter(Category == "Buses") %>% 
   select(Segment) %>% 
   unique()
+```
 
-# Jezeli input3 z wektorem segm., ktory nie nalezy do 
-# danej kategorii pojazdow to zglosi nam blad -
-# przedostatnia linijka eeval_calc()
+Jezeli input3 będzie wygenerowany z wektorem segmentu, ktory nie nalezy do danej kategorii pojazdow to zgłosi nam bład.   *Odpowiada za to przedostatnia linijka kodu w funkcji eeval_calc()*
 
+``` {r zestaw3, eval = FALSE}
+## ZESTAW PARAMETROW nr 3 ----------------------------------------------
 # losowanie danych
 input3 <- eeval_input(segm = c("Urban Buses Midi <=15 t",
                                "Urban Buses Standard 15 - 18 t",
@@ -188,3 +165,40 @@ eeval_draw(dane = eeval_wynik3,
            nrow = 2,
            max_y = 1000)
 ```
+
+
+***
+## 3. Własne dane "surowe".
+***
+Jak już zaznajomimy się z działaniem funkcji pakietu, możemy zacząć zabawę z innymi danymi "surowymi".  
+
+Aktualną wersję pliku surowych danych można pobrać ze strony:
+[eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)
+
+Dokumemntacja do tych danych jest zamieszczona na stronie:
+[eea opis](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
+
+Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:
+
+``` {r utworz_wskazn, eval = FALSE}
+library("openxlsx")
+katalog = "c:/sciezka_do_pliku/"
+setwd(katalog)
+# przykładowa nazwa pliku - należy ustawić własną
+plik_xlsx = "1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx"
+wskazniki <- openxlsx::read.xlsx(xlsxFile = plik_xlsx, sheet = 2)
+
+wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
+
+wskazniki <-wskazniki %>% 
+  select(-`EF.[g/km].or.ECF.[MJ/km]`,
+         -`Min.Speed.[km/h]`,
+         -`Max.Speed.[km/h]`,
+         -`Road.Slope`,
+         -`Load`)
+
+colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
+```
+
+Teraz wystarczy wygenerować własny `input` funkcją `eeval_input()` z odpowiednimi parametrami.
+W dalszej kolejności możemy obliczać emisje i rysować wykresy. Miłej pracy!
