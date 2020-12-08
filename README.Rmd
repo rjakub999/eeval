@@ -37,7 +37,7 @@ library(eeval)
 ## Przykład zastosowania
 
 
-```{r example}
+```{r example, eval = FALSE}
 library(eeval)
 eeval_calc()
 eeval_draw()
@@ -48,10 +48,6 @@ eeval_draw()
 ## Podgląd winiety
 
 ```{r, eval=FALSE}
-# w przeglądarce
 browseVignettes("eeval")
-
-# w oknie pomocy
-vignette("eeval")
 ```
 
