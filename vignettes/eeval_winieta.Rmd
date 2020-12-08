@@ -85,10 +85,22 @@ library(ggplot2)
 Plik z surowymi danymi `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
 
 Dokumemntacja do tych danych jest zamieszczona na stronie:
-https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view
+[eea](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
+
+***
+## 2. Dane wejściowe 
+***
+
+Obiekt `input` to dane wejsciowe dla funkcji szacowania emisji.
+Zawiera następujące dane:  
+* Natężenie ruchu to wygenerowany losowo wektor o zadanej długosci.  
+* Pozostale dane są wybrane z obiektu wskazniki.  
 
 
 
+***
+## 3. Funkcje pakietu 
+***
 
 ```
 ## ZESTAW PARAMETROW DOMYSLNYCH -----------------------------------
