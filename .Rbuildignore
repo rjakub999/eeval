@@ -5,3 +5,6 @@
 ^pisanie_eeval\.R$
 ^doc$
 ^Meta$
+^rsconect$
+^rsconnect$
+^vignettes/rsconnect$
