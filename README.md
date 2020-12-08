@@ -48,10 +48,10 @@ Peny opis pakietu znajduje się na stronie
 ## Instalacja z winietą
 
 ``` r
-# W razie potrzeby trzeba zainstalować pakiet devtools
+# w razie potrzeby należy zainstalować pakiet devtools
 if (!require(devtools)) {install.packages("devtools"); require(devtools)}
 
-# Instalacja z GitHub
+# instalacja z GitHub
 install_github("rjakub999/eeval", force = T, build_vignettes = T)
 library(eeval)
 ```
@@ -61,7 +61,7 @@ library(eeval)
 ``` r
 # opis pakietu w systemie pomocy 
 ?eeval
-# utuchomienie funkcji z parametrami domyślnymi
+# uruchomienie funkcji z parametrami domyślnymi
 eeval_calc()
 eeval_draw()
 ```
