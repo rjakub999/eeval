@@ -40,7 +40,8 @@ Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnik
 Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu daych zawartych w obiekcie `wskazniki`.
 
 Winieta opisuje nastpujące zagadnienia:  
-1. Zawartość **surowego pliku danych** `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`  
+1. Zawartość **surowego pliku danych** `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
+   i ewentualne samodzielne przygotowanie danych wejściowych dla funkcji pakietu.
 2. Format **danych wejściowych** przetwarzanych przez funkcje pakietu.  
 3. Opis **funkcji pakietu** i możliwości ich wykorzystania.  
 
@@ -84,8 +85,32 @@ library(ggplot2)
 
 Plik z surowymi danymi `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
 
+Można też pobrać aktualną wersję pliku surowych danych ze strony:
+[eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)
+
 Dokumemntacja do tych danych jest zamieszczona na stronie:
-[eea](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
+[eea pdf](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
+
+Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:
+
+``` {r utworz_wskazn, eval = FALSE}
+library("openxlsx")
+katalog = "c:/sciezka_do_pliku/"
+setwd(katalog)
+plik_xlsx = "1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx"
+wskazniki <- openxlsx::read.xlsx(xlsxFile = plik_xlsx, sheet = 2)
+
+wskazniki$Mode[is.na(wskazniki$Mode)] <- ""
+
+wskazniki <-wskazniki %>% 
+  select(-`EF.[g/km].or.ECF.[MJ/km]`,
+         -`Min.Speed.[km/h]`,
+         -`Max.Speed.[km/h]`,
+         -`Road.Slope`,
+         -`Load`)
+
+colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
+```
 
 ***
 ## 2. Dane wejściowe 
