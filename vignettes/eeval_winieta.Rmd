@@ -1,21 +1,28 @@
 ---
-title: "Opis pakietu eeval"
+title: "Opis pakietu `eeval`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Opis pakietu eeval}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{Opis pakietu `eeval`}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+  comment = "#>", 
+  echo = T, 
+  message = F, 
+  warning = F
 )
 ```
 
-```{r setup}
+```{r setup1, include=FALSE, results='hide'}
+# By nie pobierać w kółko danych do kompilacji
 library(eeval)
+getwd()
+# load(file = "../R/sysdata.rda")
 ```
 
 
@@ -28,6 +35,45 @@ Geoinformacja III rok
 ## Wstęp
 ***
 
-Fukcje pakietu pozwalają na obliczenia i wizualizacje emisji.
+Pakiet utworzony w ramach przedmiotu Inwentaryzacja i Szacowanie Emisji.  
+Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnikami spalinowymi i wyświetlania wyników na wykresach. Funkcje pakietu korzystają z danych dołączonych do pakietu.   
+Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu daych zawartych w obiekcie `wskazniki`.
+
+Winieta opisuje nastpujące zagadnienia:  
+1. Zawartość surowego pliku `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`  
+2. Format danych wejściowych przetwarzanych przez funkcje pakietu.  
+3. Opis funkcji pakietu i możliwości ich wykorzystania.  
 
 
+***
+## Instalacja pakietu
+***
+
+Repozytorium pakietu znajduje się na portalu [github](https://github.com/).
+Do jego pobrania i instalacji potrzebny jest pakiet `devtools`.
+
+```{r setup2, eval=FALSE}
+if(!require(devtools)) {install.packages("devtools"); require(devtools)}
+# instalcja pakietu eeval
+devtools::install_github("rjakub999/eeval")
+library(eeval)
+```
+
+Wszystkie funkcje i dane zawarte w pakiecie posiadają dokumentację dostępną w systemie pomocy programu RStudio.
+Poniżej sposób wywołania ogólnych informacji o pakiecie.
+
+```{r, eval=F}
+help(package = "eeval")
+```
+
+Do pełnego wykorzystania możliwości pakietu zalecane jest załadowanie dodatkowych pakietów.
+
+```{r, results='hide'}
+library(dplyr)
+library(magrittr)
+library(qpdf)
+library(utils)
+library(rlang)
+library(stats)
+library(ggplot2)
+```
