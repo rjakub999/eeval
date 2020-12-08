@@ -1,5 +1,6 @@
-#' Funkcja rysuje wykresy na podstawie danych utworzonych za pomoca eeval_calc()
+#' Funkcja rysuje wykresy emisji
 #'
+#' Funkcja rysuje wykresy emisji na podstawie danych utworzonych za pomoca \code{eeval_calc()}
 #' Rodzaj wykresow jest ustalany automatycznie w zaleznosci od typu
 #' zmiennej na osi x.
 #' Dla zmiennej typu numeric rysowane sa wykresy punktowe z wygladzonymi liniami.
@@ -30,7 +31,7 @@
 #'            z = .data$Pollutant,
 #'            u = .data$Euro.Standard,
 #'            nrow = 2,
-#'            skala_y = 2000)
+#'            max_y = 2000)
 #'
 #' # Narysowanie wykresow dla przykladowych danych input3
 #' eeval_draw(dane = eeval_wynik3,
@@ -38,7 +39,7 @@
 #'            y = .data$Emisja,
 #'            z = .data$Pollutant,
 #'            nrow = 2,
-#'            skala_y = 1000)
+#'            max_y = 1000)
 #'}
 eeval_draw <- function(dane = eeval_wynik,
                        x = .data$Nat,

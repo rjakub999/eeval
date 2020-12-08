@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_draw.R
 \name{eeval_draw}
 \alias{eeval_draw}
-\title{Funkcja rysuje wykresy na podstawie danych utworzonych za pomoca eeval_calc()}
+\title{Funkcja rysuje wykresy emisji}
 \usage{
 eeval_draw(
   dane = eeval_wynik,
@@ -33,6 +33,7 @@ eeval_draw(
 double
 }
 \description{
+Funkcja rysuje wykresy emisji na podstawie danych utworzonych za pomoca \code{eeval_calc()}
 Rodzaj wykresow jest ustalany automatycznie w zaleznosci od typu
 zmiennej na osi x.
 Dla zmiennej typu numeric rysowane sa wykresy punktowe z wygladzonymi liniami.
@@ -50,7 +51,7 @@ eeval_draw(dane = eeval_wynik2,
            z = .data$Pollutant,
            u = .data$Euro.Standard,
            nrow = 2,
-           skala_y = 2000)
+           max_y = 2000)
 
 # Narysowanie wykresow dla przykladowych danych input3
 eeval_draw(dane = eeval_wynik3,
@@ -58,6 +59,6 @@ eeval_draw(dane = eeval_wynik3,
            y = .data$Emisja,
            z = .data$Pollutant,
            nrow = 2,
-           skala_y = 1000)
+           max_y = 1000)
 }
 }

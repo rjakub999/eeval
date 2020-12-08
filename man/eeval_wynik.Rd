@@ -25,6 +25,8 @@ eeval_wynik
 Obiekt ten stanowi przykladowe dane wejsciowe dla funkcji eeval_draw().
 }
 \examples{
+\dontrun{
 eeval_wynik
+}
 }
 \keyword{datasets}

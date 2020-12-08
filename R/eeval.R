@@ -1,6 +1,9 @@
 #' eeval: Pakiet oceny emisji (emission evaluation)
 #'
-#' Pakiet zawiera trzy funkcje eeval_input(), eeval_calc(), eeval_draw()
+#' Pakiet służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy
+#' z silnikami spalinowymi i wyswietlania wyników na wykresach.
+#'
+#' Pakiet zawiera trzy funkcje: eeval_input(), eeval_calc(), eeval_draw()
 #'
 #' \code{eeval_input()} generuje dane wejsciowe
 #'

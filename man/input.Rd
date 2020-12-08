@@ -21,6 +21,8 @@ Natezenie ruchu to wygenerowany losowo wektor o zadanej dlugosci.
 Pozostale dane sa wybrane z obiektu wskazniki.
 }
 \examples{
+\dontrun{
 input
+}
 }
 \keyword{datasets}

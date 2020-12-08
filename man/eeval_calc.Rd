@@ -2,7 +2,7 @@
 % Please edit documentation in R/eeval_calc.R
 \name{eeval_calc}
 \alias{eeval_calc}
-\title{Funkcja do wyznaczania wartosci emisji.}
+\title{Funkcja do wyznaczania wartosci emisji}
 \usage{
 eeval_calc(
   dane = input,
@@ -13,15 +13,15 @@ eeval_calc(
 )
 }
 \arguments{
-\item{dane}{data.frame}
+\item{dane}{data.frame - dane wejsciowe w formacie jak w obiekcie input}
 
-\item{kategoria}{character}
+\item{kategoria}{character - kategoria pojazdu - Passenger Cars itd.}
 
-\item{euro}{character}
+\item{euro}{character - norma dopuszczalnych emisji spalin - Euro 4 itd.}
 
-\item{mode}{character}
+\item{mode}{character - tryb jazdy pojazdu - Urban Peak itd.}
 
-\item{substancja}{character}
+\item{substancja}{character - rodzaj emitowanego zanieczyszczenia - NOx itd.}
 }
 \value{
 double
@@ -31,6 +31,11 @@ Funkcja oblicza emisje na podstawie danych zawartych w zmiennej
 \code{wskazniki} oraz przygotowanej w odpowiedni sposob zmiennej \code{input}.
 W obiekcie \code{wskazniki} zapisane sa dane emisji z podzialem na rozne kategorie.
 W obiekcie \code{input} zapisane sa wygenerowane losowo dane natezenia ruchu.
+}
+\details{
+Algorytm obliczen emisji:
+Emisja = Nat x ((Alpha  x Procent^2 + Beta x Procent + Gamma +
+(Delta/Procent)) / (Epsilon x Procent^2 + Zita x Procent + Hta) x (1- Reduction))
 }
 \examples{
 # Obliczenie emisji dla parametrow domyslnych (input)

@@ -15,5 +15,7 @@
 #'  \item{Emisja}{Obliczona emisja spalin}
 #' }
 #' @examples
+#' \dontrun{
 #' eeval_wynik
+#' }
 "eeval_wynik"

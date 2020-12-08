@@ -5,9 +5,12 @@
 \alias{eeval}
 \title{eeval: Pakiet oceny emisji (emission evaluation)}
 \description{
-Pakiet zawiera trzy funkcje eeval_input(), eeval_calc(), eeval_draw()
+Pakiet służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy
+z silnikami spalinowymi i wyswietlania wyników na wykresach.
 }
 \details{
+Pakiet zawiera trzy funkcje: eeval_input(), eeval_calc(), eeval_draw()
+
 \code{eeval_input()} generuje dane wejsciowe
 
 \code{eeval_calc()} oblicza emisje

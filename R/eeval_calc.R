@@ -1,15 +1,19 @@
-#' Funkcja do wyznaczania wartosci emisji.
+#' Funkcja do wyznaczania wartosci emisji
 #'
 #'  Funkcja oblicza emisje na podstawie danych zawartych w zmiennej
 #' \code{wskazniki} oraz przygotowanej w odpowiedni sposob zmiennej \code{input}.
 #' W obiekcie \code{wskazniki} zapisane sa dane emisji z podzialem na rozne kategorie.
 #' W obiekcie \code{input} zapisane sa wygenerowane losowo dane natezenia ruchu.
 #'
-#' @param dane data.frame
-#' @param kategoria character
-#' @param euro character
-#' @param mode character
-#' @param substancja character
+#' @details Algorytm obliczen emisji:
+#' Emisja = Nat x ((Alpha  x Procent^2 + Beta x Procent + Gamma +
+#' (Delta/Procent)) / (Epsilon x Procent^2 + Zita x Procent + Hta) x (1- Reduction))
+#'
+#' @param dane data.frame - dane wejsciowe w formacie jak w obiekcie input
+#' @param kategoria character - kategoria pojazdu - Passenger Cars itd.
+#' @param euro character - norma dopuszczalnych emisji spalin - Euro 4 itd.
+#' @param mode character - tryb jazdy pojazdu - Urban Peak itd.
+#' @param substancja character - rodzaj emitowanego zanieczyszczenia - NOx itd.
 #'
 #' @return double
 #'

@@ -11,5 +11,7 @@
 #'  \item{Technology}{Technologia pracy silnika - GDI itd.}
 #' }
 #' @examples
+#' \dontrun{
 #' input
+#' }
 "input"
