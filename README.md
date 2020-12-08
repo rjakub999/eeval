@@ -12,6 +12,9 @@ Plik źródłowy z pierwotnymi danymi: `1.A.3.b.i-iv Road Transport
 Appendix 4 Emission Factors 2019.xlsx` został wstępnie przetworzony i
 zpisany do obiektu `wskazniki`.
 
+Peny opis pakietu znajdije się na stronie
+[RPubs](https://rpubs.com/rjakub/eeval_winieta)
+
 ## Instalacja z winietą
 
 ``` r

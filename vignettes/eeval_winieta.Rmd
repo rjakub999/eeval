@@ -40,9 +40,9 @@ Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnik
 Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu daych zawartych w obiekcie `wskazniki`.
 
 Winieta opisuje nastpujące zagadnienia:  
-1. Zawartość surowego pliku `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`  
-2. Format danych wejściowych przetwarzanych przez funkcje pakietu.  
-3. Opis funkcji pakietu i możliwości ich wykorzystania.  
+1. Zawartość **surowego pliku danych** `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`  
+2. Format **danych wejściowych** przetwarzanych przez funkcje pakietu.  
+3. Opis **funkcji pakietu** i możliwości ich wykorzystania.  
 
 
 ***
@@ -76,4 +76,78 @@ library(utils)
 library(rlang)
 library(stats)
 library(ggplot2)
+```
+
+***
+## 1. Surowy plik danych
+***
+
+Plik z surowymi danymi `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx`
+
+Dokumemntacja do tych danych jest zamieszczona na stronie:
+https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view
+
+
+
+
+```
+## ZESTAW PARAMETROW DOMYSLNYCH -----------------------------------
+eeval_calc()
+eeval_draw()
+
+## ZESTAW PARAMETROW nr 2 ------------------------------------------
+# losowanie danych
+input2 <- eeval_input(segm = c("Mini","Small","Medium","Large-SUV-Executive"),
+                      n_spl = 300)
+
+# obliczenia emisji 
+eeval_wynik2 <- 
+  eeval_calc(dane = input2,
+             kategoria = "Passenger Cars",
+             euro = c("Euro 3", "Euro 4", "Euro 5", "Euro 6 up to 2016"),
+             substancja = c("EC", "CO", "NOx"),
+             mode = "")
+
+# rysowanie wykresu
+eeval_draw(dane = eeval_wynik2,
+           x = .data$Nat,
+           y = .data$Emisja,
+           z = .data$Pollutant,
+           u = .data$Euro.Standard,
+           nrow = 2,
+           max_y = 2000)
+
+
+## ZESTAW PARAMETROW nr 3 ----------------------------------------------
+wskazniki %>% 
+  filter(Category == "Buses") %>% 
+  select(Segment) %>% 
+  unique()
+
+# Jezeli input3 z wektorem segm., ktory nie nalezy do 
+# danej kategorii pojazdow to zglosi nam blad -
+# przedostatnia linijka eeval_calc()
+
+# losowanie danych
+input3 <- eeval_input(segm = c("Urban Buses Midi <=15 t",
+                               "Urban Buses Standard 15 - 18 t",
+                               "Urban Buses Articulated >18 t",
+                               "Coaches Standard <=18 t"),
+                      n_spl = 200)
+
+# obliczenia emisji
+eeval_wynik3 <- 
+  eeval_calc(dane = input3,
+             kategoria = "Buses",
+             euro = c("Euro II", "Euro III", "Euro IV", "Euro V"),
+             substancja = c("EC", "CO", "NOx", "NH3"),
+             mode = "")
+
+# rysowanie wykresow
+eeval_draw(dane = eeval_wynik3,
+           x = .data$Segment,
+           y = .data$Emisja,
+           z = .data$Pollutant,
+           nrow = 2,
+           max_y = 1000)
 ```
