@@ -60,6 +60,8 @@ library(eeval)
 
 ``` r
 library(eeval)
+# opis pakietu w systemie pomocy 
+?eeval
 # utuchomienie funkcji z parametrami domyślnymi
 eeval_calc()
 eeval_draw()
