@@ -26,7 +26,8 @@ getwd()
 ```
 
 
-**Jakub Rudek**
+**Jakub Rudek**  
+AGH, Wydział Geodezji Górniczej i Inżynierii Środowiska  
 Geoinformacja III rok
 
 **e-mail:** *[rjakub999@gmail.com](rjakub999@gmail.com)*
@@ -35,14 +36,14 @@ Geoinformacja III rok
 ## Wstęp
 ***
 
-Pakiet utworzony w ramach przedmiotu Inwentaryzacja i Szacowanie Emisji.  
+Pakiet utworzony w ramach przedmiotu Metody inwentaryzacji i Szacowanie Emisji.  
 Służy do obliczania emisji zanieczyszczeń generowanych przez pojazdy z silnikami spalinowymi i wyświetlania wyników na wykresach. Funkcje pakietu korzystają z danych dołączonych do pakietu.   
-Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zpisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu danych zawartych w obiekcie `wskazniki`. Dodatkowo do działania pakietu używany jest obiekt `input`.  
+Plik źródłowy z surowymi danymi:  `1.A.3.b.i-iv Road Transport Appendix 4 Emission Factors 2019.xlsx` nie znajduje się w pakiecie. Został on wstępnie przetworzony i zapisany jako ramka danych `wskazniki`. Ten obiekt jest dołączony do pakietu i stanowi podstawowe dane do dalszych analiz. Do prawiłdowego działania funkcji pakietu nie można zmieniać formatu danych zawartych w obiekcie `wskazniki`. Dodatkowo do działania pakietu używany jest obiekt `input`.  
 
 Winieta opisuje następujące zagadnienia:  
 1. Format **danych wejściowych** przetwarzanych przez funkcje pakietu.  
-3. Opis **funkcji pakietu** i możliwości ich wykorzystania.  
-4. Przygotowanie **własnych danych surowych**.
+2. Opis **funkcji pakietu** i możliwości ich wykorzystania.  
+3. Przygotowanie **własnych danych surowych**.
 
 ***
 ## Instalacja pakietu
@@ -58,7 +59,6 @@ devtools::install_github("rjakub999/eeval")
 library(eeval)
 ```
 
-Wszystkie funkcje i dane zawarte w pakiecie posiadają dokumentację dostępną w systemie pomocy programu RStudio.
 Poniżej sposób wywołania ogólnych informacji o pakiecie.
 
 ```{r, eval=F}
@@ -81,26 +81,59 @@ library(ggplot2)
 ## 1. Dane wejściowe 
 ***
 
-Obiekt `input` to dane wejsciowe dla funkcji szacowania emisji.
+Ramka danych `wskazniki` to dane wejściowe do których odwołuje się funkcja `eeval_calc()`.
+Dane te są częścią pakietu, ale można też utworzyć własne `wskazniki`, co zostało opisane w punkcie 3.
+W obiekcie `wskazniki` mamy zapisane dane do algorytmu szacowania emisji z podziałem na różne kategorie pojazdów,
+rodzaj paliwa, technologię silnika, tryb jazdy, normę dopuszczalnej emisji spalin.
+
+Obiekt `input` to dane wejściowe, które są argumentem funkcji `eeval_calc()`.
+Przykładowy `input` jest dołaczony do pakietu. W punkcie 2 jest opisane, jak utworzyć go samodzielnie.
 Zawiera następujące dane:  
 * Natężenie ruchu to wygenerowany losowo wektor o zadanej długosci.  
 * Pozostale dane są wybrane z obiektu `wskazniki`.  
 
+Dane zawarte w pakiecie posiadają dokumentację dostępną w systemie pomocy programu RStudio.  
+Przykłady wywołania dokumentacji do danych pakietu:
 
+```{r dok_dane, eval = FALSE}
+?input
+?wskazniki
+?eeval_wynik
+```
 
 ***
 ## 2. Funkcje pakietu 
 ***
 
+Funkcje pakietu posiadają dokumentację dostępną w systemie pomocy programu RStudio. Maj one też "samokomentujące" się nazwy. 
+W celu zapoznania się ze szczegółami zachęcam do jej przeglądnięcia po zainstalowaniu pakietu.
+Przykłady wywołania dokumentacji do funkcji pakietu:
+
+```{r dok_fun, eval = FALSE}
+?eeval_input
+?eeval_calc
+?eeval_draw
+```
+
 Uruchomienie funkcji z parametrami domyślnymi pozwala na szybki start.
 
-```{r zestaw_domyslny, eval = FALSE}
+```{r calc_domy, eval = TRUE}
 ## ZESTAW PARAMETROW DOMYSLNYCH -----------------------------------
-eeval_calc()
+eeval_wynik <- eeval_calc()
+glimpse(eeval_wynik)
+```
+
+Funkcja `eeval_draw()` automatycznie określa rodzaj generowanych wykresów w zależności od typu zmiennej dla osi x:  
+*  dla zmiennej typu numeric rysowane są wykresy punktowe z wygładzonymi liniami  
+*  dla zmiennej typu character rysowane są wykresy pudełkowe
+
+```{r draw_dom, eval = TRUE, fig.width = 7,fig.height = 6}
 eeval_draw()
 ```
 
-W celu sprawnego zapoznania się z modyfikacją parametrów funkcji pakietu przygotowałem dwa zestawy parametrów, które pokazują cały "workflow" działania z pakietem.
+
+W celu sprawnego zapoznania się z modyfikacją parametrów funkcji pakietu przygotowałem dwa zestawy parametrów, które pokazują cały "workflow" działania z pakietem.  
+**Uwaga:** Każde kolejne uruchomiene funkcji `eeval_input()` powoduje wygenerowanie innego zestawu danych.
 
 
 ``` {r zestaw2, eval = FALSE}
@@ -128,7 +161,9 @@ eeval_draw(dane = eeval_wynik2,
 
 ```
 
+Jak widać dla funkcji `eeval_calc()` parametry euro i substancja możemy podawać jako wektory zawierające kilka wybranych z dostępnych wartości. 
 
+W celu samodzielnego wygenerowania ramki danych `input` musimy wykonać sprawdzenie dostpęnych wartości.
 Sprawdzenie jakie są dostępne segmenty pojazdów (Segment) w danej kategorii (Category) możemy wykonać posługując się przykładowym kodem:  
 
 ```{r test_kat, eval = FALSE}
@@ -170,7 +205,7 @@ eeval_draw(dane = eeval_wynik3,
 ***
 ## 3. Własne dane "surowe".
 ***
-Jak już zaznajomimy się z działaniem funkcji pakietu, możemy zacząć zabawę z innymi danymi "surowymi".  
+Po zaznajomieniu się z działaniem funkcji pakietu, możemy zacząć zabawę z innymi danymi "surowymi".  
 
 Aktualną wersję pliku surowych danych można pobrać ze strony:
 [eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)
@@ -201,4 +236,10 @@ colnames(wskazniki)[15:17] <- c("Reduction", "Bio", "Procent")
 ```
 
 Teraz wystarczy wygenerować własny `input` funkcją `eeval_input()` z odpowiednimi parametrami.
-W dalszej kolejności możemy obliczać emisje i rysować wykresy. Miłej pracy!
+W dalszej kolejności możemy obliczać emisje i rysować wykresy.  
+
+***
+
+**Pożytecznych działań z pakietem!**
+
+***
