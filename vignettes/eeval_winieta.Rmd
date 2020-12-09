@@ -132,6 +132,7 @@ eeval_draw()
 
 
 W celu sprawnego zapoznania się z modyfikacją parametrów funkcji pakietu przygotowałem dwa zestawy parametrów, które pokazują cały "workflow" działania z pakietem.  
+<br>
 **Uwaga:** Każde kolejne uruchomiene funkcji `eeval_input()` powoduje wygenerowanie innego zestawu danych.
 
 
@@ -207,12 +208,14 @@ eeval_draw(dane = eeval_wynik3,
 Po zaznajomieniu się z działaniem funkcji pakietu, możemy zacząć zabawę z innymi danymi "surowymi".  
 
 Aktualną wersję pliku surowych danych można pobrać ze strony:
-[eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)
+[eea dane](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/road-transport-appendix-4-emission/view)  
 
 Dokumemntacja do tych danych jest zamieszczona na stronie:
-[eea opis](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)
+[eea opis](https://www.eea.europa.eu/publications/emep-eea-guidebook-2019/part-b-sectoral-guidance-chapters/1-energy/1-a-combustion/1-a-3-b-i/view)  
 
-Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:
+**Uwaga:** Jeżeli po kliknięciu na link strona nie otwiera się, to trzeba kliknąć prawym klawiszem na linku i otworzyć go w nowym oknie.  
+
+Następnie można samodzielnie utworzyć obiekt `wskazniki`. W tym celu należy użyć następującego kodu:  
 
 ``` {r utworz_wskazn, eval = FALSE}
 library("openxlsx")
