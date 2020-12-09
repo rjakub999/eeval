@@ -1,5 +1,6 @@
 ---
 title: "Opis pakietu `eeval`"
+date:   "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Opis pakietu `eeval`}
@@ -19,12 +20,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup1, include=FALSE, results='hide'}
-# By nie pobierać w kółko danych do kompilacji
 library(eeval)
-getwd()
-# load(file = "../R/sysdata.rda")
 ```
 
+***
 
 **Jakub Rudek**  
 AGH, Wydział Geodezji Górniczej i Inżynierii Środowiska  
