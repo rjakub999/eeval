@@ -3,11 +3,12 @@
 
 # eeval
 
-Pakiet utworzony w języku programowania R, w ramach przedmiotu
-Inwentaryzacja i Szacowanie Emisji.  
+Pakiet utworzony w języku programowania R, w ramach przedmiotu Metody
+Inwentaryzacji i Szacowanie Emisji.  
 Służy do wyznaczania emisji zanieczyszczeń generowanych przez pojazdy z
 silnikami spalinowymi.  
-Wyniki obliczeń można zaprezentowac na wykresach.  
+Za pomocą funkcji pakietu wyniki obliczeń można zaprezentować na
+wykresach.  
 Funkcje pakietu domyślnie korzystają z danych dołączonych do pakietu.  
 Plik źródłowy z surowymi danymi: `1.A.3.b.i-iv Road Transport Appendix 4
 Emission Factors 2019.xlsx`  
